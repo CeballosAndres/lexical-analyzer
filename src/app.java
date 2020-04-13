@@ -4,8 +4,21 @@ import javax.swing.JFileChooser;
 import javax.swing.JOptionPane;
 import javax.swing.table.DefaultTableModel;
 
+/*
+    
+Proyecto: Analizador léxico
+Asignatura: Lenguajes y Autómatas I
+Alumno: José Andrés Ceballos Vadillo
+No. Ctrl: 17460386
+
+Descripción: Programa para realizar un análisis léxico de un código con 
+java simplificado.
+
+ */
 public class app extends javax.swing.JFrame {
 
+    // Tabla de transiciones usada para identificar los 10 diferentes componentes
+    // léxicos de java simplificado. 
     int[][] matriz = {
         {2, 7, -1, 8, 5, 3, 10, 9, 6, 12, 8, 11, -1, 4, 3, 1, 1, 1},
         {2, 7, -1, 8, 5, 3, 10, 9, 6, 12, 8, 11, -1, 4, 3, 1, 1, 1},
@@ -39,11 +52,14 @@ public class app extends javax.swing.JFrame {
         {2, 7, -1, 8, 5, 3, 10, 9, 6, 12, 8, 11, -1, 4, 3, 1, 1, 1},
         {2, 7, -1, 8, 5, 3, 10, 9, 6, 12, 8, 11, -1, 4, 3, 1, 1, 1},
         {2, 7, -1, 8, 5, 3, 10, 9, 6, 12, 8, 11, -1, 4, 3, 1, 1, 1}};
+    // Variables para definir la transición para cada una de las categorías
     String letras = "abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ";
     String numeros = "0123456789";
     String aritmeticos = "+-^";
     String relacionales = "<>";
     String separadores = ":;(){}[],";
+    // Titulos de tabla de analizador léxico
+    String[] titles = {"Lexema", "Componente léxico"};
 
     public app() {
         initComponents();
@@ -62,13 +78,14 @@ public class app extends javax.swing.JFrame {
         btnLimpiar = new javax.swing.JButton();
         jScrollPane2 = new javax.swing.JScrollPane();
         tblLexemas = new javax.swing.JTable();
-        jLabel2 = new javax.swing.JLabel();
-        jLabel3 = new javax.swing.JLabel();
-        jLabel1 = new javax.swing.JLabel();
-        jLabel4 = new javax.swing.JLabel();
+        lblImgItcolima = new javax.swing.JLabel();
+        lblImgTecnm = new javax.swing.JLabel();
+        lblTitulo = new javax.swing.JLabel();
+        lblMateria = new javax.swing.JLabel();
         btnAnalisis = new javax.swing.JButton();
         btnAyuda = new javax.swing.JButton();
         btnCreditos = new javax.swing.JButton();
+        lblAlumno = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setTitle("Analizador léxico");
@@ -108,24 +125,15 @@ public class app extends javax.swing.JFrame {
         ));
         jScrollPane2.setViewportView(tblLexemas);
 
-        jLabel2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/tec.png"))); // NOI18N
+        lblImgItcolima.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/tec.png"))); // NOI18N
 
-        jLabel3.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/tecnm.png"))); // NOI18N
+        lblImgTecnm.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/tecnm.png"))); // NOI18N
 
-        jLabel1.setFont(new java.awt.Font("Arial", 0, 30)); // NOI18N
-        jLabel1.setText("Analizador Léxico");
-        jLabel1.addAncestorListener(new javax.swing.event.AncestorListener() {
-            public void ancestorAdded(javax.swing.event.AncestorEvent evt) {
-                jLabel1AncestorAdded(evt);
-            }
-            public void ancestorMoved(javax.swing.event.AncestorEvent evt) {
-            }
-            public void ancestorRemoved(javax.swing.event.AncestorEvent evt) {
-            }
-        });
+        lblTitulo.setFont(new java.awt.Font("Arial", 0, 30)); // NOI18N
+        lblTitulo.setText("Analizador Léxico");
 
-        jLabel4.setFont(new java.awt.Font("Arial", 3, 18)); // NOI18N
-        jLabel4.setText("Lenguajes y Autómatas I");
+        lblMateria.setFont(new java.awt.Font("Arial", 3, 18)); // NOI18N
+        lblMateria.setText("Lenguajes y Autómatas I");
 
         btnAnalisis.setText("Análisis Léxico");
         btnAnalisis.addActionListener(new java.awt.event.ActionListener() {
@@ -148,19 +156,23 @@ public class app extends javax.swing.JFrame {
             }
         });
 
+        lblAlumno.setFont(new java.awt.Font("Arial", 3, 10)); // NOI18N
+        lblAlumno.setText("José Andrés Ceballos Vadillo - 17460386");
+
         javax.swing.GroupLayout panelLayout = new javax.swing.GroupLayout(panel);
         panel.setLayout(panelLayout);
         panelLayout.setHorizontalGroup(
             panelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(panelLayout.createSequentialGroup()
                 .addGap(16, 16, 16)
-                .addComponent(jLabel3)
+                .addComponent(lblImgTecnm)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addGroup(panelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.CENTER)
-                    .addComponent(jLabel4)
-                    .addComponent(jLabel1))
+                    .addComponent(lblMateria)
+                    .addComponent(lblTitulo)
+                    .addComponent(lblAlumno))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addComponent(jLabel2)
+                .addComponent(lblImgItcolima)
                 .addGap(35, 35, 35))
             .addGroup(panelLayout.createSequentialGroup()
                 .addGap(39, 39, 39)
@@ -192,17 +204,21 @@ public class app extends javax.swing.JFrame {
         panelLayout.setVerticalGroup(
             panelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(panelLayout.createSequentialGroup()
-                .addGroup(panelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                .addGroup(panelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                    .addGroup(panelLayout.createSequentialGroup()
+                        .addComponent(lblImgItcolima)
+                        .addGap(15, 15, 15))
                     .addGroup(panelLayout.createSequentialGroup()
                         .addContainerGap()
-                        .addGroup(panelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                        .addGroup(panelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                             .addGroup(panelLayout.createSequentialGroup()
-                                .addComponent(jLabel1)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addComponent(jLabel4))
-                            .addComponent(jLabel3)))
-                    .addComponent(jLabel2))
-                .addGap(15, 15, 15)
+                                .addComponent(lblTitulo)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                .addComponent(lblMateria))
+                            .addComponent(lblImgTecnm))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addComponent(lblAlumno)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)))
                 .addGroup(panelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 328, Short.MAX_VALUE)
                     .addGroup(panelLayout.createSequentialGroup()
@@ -243,6 +259,7 @@ public class app extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void btnLeerActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnLeerActionPerformed
+        // Método para leer cualquier archivo
         JFileChooser fileChooser = new JFileChooser("f:");
         fileChooser.setDialogTitle("Seleccione archivo a leer:");
         int response = fileChooser.showOpenDialog(null);
@@ -264,6 +281,7 @@ public class app extends javax.swing.JFrame {
 
 
     private void btnGrabarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnGrabarActionPerformed
+        // Método para guardar cambios
         JFileChooser fileChooser = new JFileChooser("f:");
         fileChooser.setDialogTitle("Seleccione dónde grabar el archivo:");
         int response = fileChooser.showSaveDialog(null);
@@ -281,13 +299,18 @@ public class app extends javax.swing.JFrame {
     }//GEN-LAST:event_btnGrabarActionPerformed
 
     private void btnLimpiarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnLimpiarActionPerformed
+        // Método para limpiar cuadro de texto
         this.tEditor.setText("");
-        this.tEditor.requestFocus();
+        this.tEditor.requestFocus(); // Redirige el foco al cuadro de texto
     }//GEN-LAST:event_btnLimpiarActionPerformed
 
     private void btnAnalisisActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnAnalisisActionPerformed
+        // Método para inicial análisis léxico. Valida que exista código en 
+        // cuadro de texto.
         String texto = this.tEditor.getText();
         if (texto.equals("")) {
+            // Si el cuadro de texto está vacio limpia tabla y muestra mensaje.
+            this.tblLexemas.setModel(this.initializeModel(this.titles));
             JOptionPane.showMessageDialog(null,
                     "Ingrese algún código para ser\nanalizado en el cuadro de texto.",
                     "Falta de código para analizar", JOptionPane.ERROR_MESSAGE);
@@ -297,17 +320,36 @@ public class app extends javax.swing.JFrame {
     }//GEN-LAST:event_btnAnalisisActionPerformed
 
     private void btnAyudaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnAyudaActionPerformed
+        // Método para desplegar ayuda del programa
         JOptionPane.showMessageDialog(null,
-                "Las siguientes son las opciones disponibles:\n\n"
+                "Con este programa se puede realizar un análisis léxico de un código\n"
+                + "para una versión simplificada del lenguaje Java.\n\n"
+                + "Las siguientes son las opciones disponibles:\n\n"
                 + "* Leer: abre cuadro de dialogo para seleccionar archivo a modificar.\n"
                 + "* Grabar: abre cuadro de dialogo para seleccionar el nombre\n"
                 + "  con el que se desea guardar el archivo.\n"
                 + "* Limpiar: partmite eliminar el contenido del cuadro de texto.\n"
-                + "* Análisis léxico: realiza el analisis léxico del código fuete.",
+                + "* Análisis léxico: realiza el analisis léxico del código fuete.\n\n"
+                + "Para su ejecución ingrese en el cuadro de texto el código a analizar\n"
+                + "o lea un archivo con la opción leer. Después, ejecute el análisis con\n"
+                + "el boton Análisis léxico.\n\n"
+                + "Ejemplo: Ingrese String cadena = \"Hola mundo\" ;      (Es necesario introducir un espacio como separador)\n"
+                + "Se desplegará en la tabla: \n"
+                + "  Lexema            Componente léxico\n"
+                + "  String               Identificador\n"
+                + "  cadena            Identificador\n"
+                + "  =                    Asignación\n"
+                + "  \"Hola mundo\"   Literal\n"
+                + "  ;                     Separador\n\n"
+                + "Fuentes de consulta: \n"
+                        + "JTable - http://www.chuidiang.org/java/tablas/tablamodelo/tablamodelo.php \n"
+                        + "Leer archivo en Java - https://geekytheory.com/como-leer-un-fichero-en-java \n"
+                        + "Switch con if anidados - https://stackoverflow.com/questions/8088370/using-regex-for-switch-statement-in-java",
                 "Ayuda", JOptionPane.INFORMATION_MESSAGE);
     }//GEN-LAST:event_btnAyudaActionPerformed
 
     private void btnCreditosActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnCreditosActionPerformed
+        // Método para desplegar creditos del programa
         JOptionPane.showMessageDialog(null,
                 "Tecnológico Nacional de México Campus Colima\n"
                 + "Lenguajes y Autómatas I\n\n"
@@ -317,21 +359,20 @@ public class app extends javax.swing.JFrame {
                 "Créditos", JOptionPane.INFORMATION_MESSAGE);
     }//GEN-LAST:event_btnCreditosActionPerformed
 
-    private void jLabel1AncestorAdded(javax.swing.event.AncestorEvent evt) {//GEN-FIRST:event_jLabel1AncestorAdded
-    }//GEN-LAST:event_jLabel1AncestorAdded
-
     private void validarCadenas(String texto) {
-        DefaultTableModel modelo = this.initializeModel(new String[]{"Lexema", "Componente léxico"});
+        // Método para analizar lexicamente código de cuadro de texto
+        // Se crea un modelo que será pasado al JTable
+        DefaultTableModel modelo = this.initializeModel(this.titles);
         int position = 0;
         int estado = 0;
         String lexema = "";
         int transition = 0;
         int oldTransition = 0;
-        
+        // Inicia recorrido por todo el contenido del cuadro de texto.
         do {
             oldTransition = transition;
             transition = getTransitionNumber(String.valueOf(texto.charAt(position)));
-            //Consumir sin agregar espacios, enter y tabulaciones
+            //Consumir sin agregar espacios, enter y tabulaciones al lexema
             if (transition < 15 || estado == 11 || estado == 15 || estado == 16) {
                 lexema += texto.charAt(position);
             }
@@ -358,15 +399,18 @@ public class app extends javax.swing.JFrame {
             }
             position++;
         } while (position < texto.length());
+        // Se pasa el modelo al Jtable para ser desplegado
         this.tblLexemas.setModel(modelo);
     }
 
+    // Método para inicializar modelo de tabla
     private DefaultTableModel initializeModel(String[] titles) {
         DefaultTableModel modelo = new DefaultTableModel();
         modelo.setColumnIdentifiers(titles);
         return modelo;
     }
 
+    // Método para agregar registro a modelo de tabla
     private DefaultTableModel addRowToModel(DefaultTableModel modelo, String lexema, String componente) {
         modelo.addRow(new Object[]{lexema, componente});
         return modelo;
@@ -374,6 +418,9 @@ public class app extends javax.swing.JFrame {
 
     // Metodo que regresa el nombre del componente léxico del estado recibido
     private String getComponentName(int estado) {
+        // Cada case hace referencia a un estado que será tratado para desplegarse
+        // en pantalla. Ej. en caso de que el estado sea 13 se sabrá que se trata
+        // de un componente léxico valido tipo identificador.
         String componente = "";
         switch (estado) {
             case 13:
@@ -434,7 +481,7 @@ public class app extends javax.swing.JFrame {
                 break;
             case "\"":
                 indice = 11;
-                break;  
+                break;
             case "/":
                 indice = 13;
                 break;
@@ -510,12 +557,13 @@ public class app extends javax.swing.JFrame {
     private javax.swing.JButton btnGrabar;
     private javax.swing.JButton btnLeer;
     private javax.swing.JButton btnLimpiar;
-    private javax.swing.JLabel jLabel1;
-    private javax.swing.JLabel jLabel2;
-    private javax.swing.JLabel jLabel3;
-    private javax.swing.JLabel jLabel4;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JScrollPane jScrollPane2;
+    private javax.swing.JLabel lblAlumno;
+    private javax.swing.JLabel lblImgItcolima;
+    private javax.swing.JLabel lblImgTecnm;
+    private javax.swing.JLabel lblMateria;
+    private javax.swing.JLabel lblTitulo;
     private javax.swing.JPanel panel;
     private javax.swing.JTextArea tEditor;
     private javax.swing.JTable tblLexemas;

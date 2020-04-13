@@ -321,7 +321,7 @@ public class app extends javax.swing.JFrame {
     }//GEN-LAST:event_jLabel1AncestorAdded
 
     private void validarCadenas(String texto) {
-        DefaultTableModel modelo = this.initializeModel(new String[]{"Léxema", "Componente lexico"});
+        DefaultTableModel modelo = this.initializeModel(new String[]{"Lexema", "Componente léxico"});
         int position = 0;
         int estado = 0;
         String lexema = "";
